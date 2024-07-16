@@ -3,17 +3,15 @@
 
 int main(void)
 {
-    Array array = Array();
+    Array<char> array = Array<char>();
 
-    array.Add(3);
-    array.Add(2);
-    array.Add(4);
-    array.Add(4);
-    array.Add(2);
+    array.Add('A');
+    array.Add('B');
+    array.Add('C');
 
     array.Print();
 
-    array.Remove(5);
+    array.Remove(1);
     
     array.Print();
 

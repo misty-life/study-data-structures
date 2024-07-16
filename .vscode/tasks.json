@@ -10,7 +10,6 @@
                 "-fansi-escape-codes",
                 "-g",
                 "${workspaceFolder}/*.cpp",
-                "${workspaceFolder}/Array/Array.cpp",
                 "-o",
                 "${workspaceFolder}/main"
             ],
