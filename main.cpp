@@ -1,21 +1,18 @@
 #include <iostream>
 #include "Array/Array.h"
+#include "DoubleLinkedList/DoubleLinkedList.h"
 
 int main(void)
 {
-    Array<char> array = Array<char>();
+    DoubleLinkedList list = DoubleLinkedList();
 
-    array.Add('A');
-    array.Add('B');
-    array.Add('C');
+    list.Append(0);
+    list.Append(1);
+    list.Append(2);
 
-    array.Print();
+    list.Insert(3, 5);
 
-    std::cout << array[3] << std::endl;
-
-    array.Remove(1);
-    
-    array.Print();
+    list.Print();
 
     return 0;
 }

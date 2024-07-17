@@ -1,7 +1,6 @@
 #include <iostream>
 
 // Declaration
-
 template <typename T> class Array {
 private:
     T *array;
@@ -20,8 +19,8 @@ public:
     int Length();
 };
 
-// Definition
 
+// Definition
 template <typename T> Array<T>::Array() {
     array = new T;
     length = 0;
@@ -32,7 +31,7 @@ template <typename T> Array<T>::~Array() {
 }
 
 template <typename T> T Array<T>::operator[](int index) {
-    if (index < 0 || index > length - 1) throw std::out_of_range();
+    if (index < 0 || index > length - 1) throw std::out_of_range("Index range error");
     
     return array[index];
 }
