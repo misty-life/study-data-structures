@@ -1,18 +1,18 @@
 #include <iostream>
+
 #include "Array/Array.h"
 #include "DoubleLinkedList/DoubleLinkedList.h"
+#include "Stack/Stack.h"
 
 int main(void)
 {
-    DoubleLinkedList<char> list = DoubleLinkedList<char>();
+    Stack<int> stack = Stack<int>();
 
-    list.Append('a');
-    list.Append('b');
-    list.Append('c');
-
-    list.Insert(1, 'd');
-
-    list.Print();
+    stack.Push(1);
+    stack.Push(2);
+    stack.Push(3);
+    stack.Push(4);
+    stack.Push(5);
 
     return 0;
 }

@@ -1,6 +1,6 @@
-### Double Linked List
+## Double Linked List
 
-## Functions
+### Functions
 - Append (리스트 끝에 삽입)
     - T : O(1)
 
@@ -27,3 +27,6 @@
 
 - Length (리스트 길이 리턴)
     - T : O(1)
+
+### Info
+- 헤드 및 테일 노드 이용

@@ -1,6 +1,6 @@
-### Array
+## Array
 
-## Functions
+### Functions
 - [] (배열 접근 연산자 함수)
     - T : O(n)
 
@@ -18,3 +18,6 @@
     
 - Length (배열 길이 출력)
     - T : O(1)
+
+### Info
+- C++ 배열로 구현, 값의 변동 마다 새로운 메모리 할당
