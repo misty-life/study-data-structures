@@ -1,45 +1,48 @@
 
 // Node Declaration
-class Node {
+template <typename T> class Node {
 public:
-    int data;
+    T data;
     Node* prev;
     Node* next;
 
-    Node(const int inotData);
+    Node();
+    Node(const T initData);
 };
 
 
 // Double Linked List Declaration
-class DoubleLinkedList {
+template <typename T> class DoubleLinkedList {
 private:
-    Node *head;
-    Node *tail;
+    Node<T> *head;
+    Node<T> *tail;
     int length;
 
 public:
     DoubleLinkedList();
 
-    void Append(const int data);
-    void Prepend(const int data);
-    int Pop();
-    int PopFront();
-    void Insert(const int index, const int data);
-    int RemoveAt(const int index);
-    DoubleLinkedList Index(const int data);
+    void Append(const T data);
+    void Prepend(const T data);
+    T Pop();
+    T PopFront();
+    void Insert(const int index, const T data);
+    T RemoveAt(const int index);
+    DoubleLinkedList Index(const T data);
     void Print();
     int Length();
 };
 
 
 // Node Definition
-Node::Node(const int inotData) : data(inotData) { }
+template <typename T> Node<T>::Node() {}
+
+template <typename T> Node<T>::Node(const T initData) : data(initData) { }
 
 
 // Double Linked List  Definition
-DoubleLinkedList::DoubleLinkedList() : length(0) {
-    head = new Node(-1);
-    tail = new Node(-1);
+template <typename T> DoubleLinkedList<T>::DoubleLinkedList() : length(0) {
+    head = new Node<T>();
+    tail = new Node<T>();
 
     head->prev = nullptr;
     head->next = tail;
@@ -47,9 +50,9 @@ DoubleLinkedList::DoubleLinkedList() : length(0) {
     tail->next = nullptr;
 }
 
-void DoubleLinkedList::Append(const int data) {
-    Node* newNode = new Node(data);
-    Node* lastNode = tail->prev;
+template <typename T> void DoubleLinkedList<T>::Append(const T data) {
+    Node<T> *newNode = new Node<T>(data);
+    Node<T> *lastNode = tail->prev;
     
     newNode->prev = lastNode;
     newNode->next = tail;
@@ -58,9 +61,9 @@ void DoubleLinkedList::Append(const int data) {
     ++length;
 }
 
-void DoubleLinkedList::Prepend(const int data) {
-    Node* newNode = new Node(data);
-    Node* firstNode = head->next;
+template <typename T> void DoubleLinkedList<T>::Prepend(const T data) {
+    Node<T> *newNode = new Node<T>(data);
+    Node<T> *firstNode = head->next;
 
     newNode->prev = head;
     newNode->next = firstNode;
@@ -69,9 +72,9 @@ void DoubleLinkedList::Prepend(const int data) {
     ++length;
 }
 
-int DoubleLinkedList::Pop() {
-    Node* deletedNode = tail->prev;
-    int data = deletedNode->data;
+template <typename T> T DoubleLinkedList<T>::Pop() {
+    Node<T> *deletedNode = tail->prev;
+    T data = deletedNode->data;
 
     deletedNode->prev->next = tail;
     tail->prev = deletedNode->prev;
@@ -81,9 +84,9 @@ int DoubleLinkedList::Pop() {
     return data;
 }
 
-int DoubleLinkedList::PopFront() {
-    Node* deletedNode = head->next;
-    int data = deletedNode->data;
+template <typename T> T DoubleLinkedList<T>::PopFront() {
+    Node<T> *deletedNode = head->next;
+    T data = deletedNode->data;
 
     head->next = deletedNode->next;
     deletedNode->next->prev = head;
@@ -93,7 +96,7 @@ int DoubleLinkedList::PopFront() {
     return data;
 }
 
-void DoubleLinkedList::Insert(const int index, const int data) {
+template <typename T> void DoubleLinkedList<T>::Insert(const int index, const T data) {
     if (index < 0 || index > length) throw std::out_of_range("Index range error");
 
     if (index == 0) {
@@ -106,8 +109,8 @@ void DoubleLinkedList::Insert(const int index, const int data) {
         return;
     }
 
-    Node* newNode = new Node(data);
-    Node* originNode = head->next;
+    Node<T> *newNode = new Node<T>(data);
+    Node<T> *originNode = head->next;
     for (unsigned int i = 0; i < index; ++i) {
         originNode = originNode->next;
     }
@@ -119,9 +122,9 @@ void DoubleLinkedList::Insert(const int index, const int data) {
     ++length;
 }
 
-int DoubleLinkedList::RemoveAt(const int index) {
-    Node* deleteNode = head->next;
-    int data = deleteNode->data;
+template <typename T> T DoubleLinkedList<T>::RemoveAt(const int index) {
+    Node<T> *deleteNode = head->next;
+    T data = deleteNode->data;
 
     for (unsigned int i = 0; i < index; ++i) deleteNode = deleteNode->next;
 
@@ -133,9 +136,9 @@ int DoubleLinkedList::RemoveAt(const int index) {
     return data;
 }
 
-DoubleLinkedList DoubleLinkedList::Index(const int data) {
-    DoubleLinkedList indexList = DoubleLinkedList();
-    Node* currentNode = head->next;
+template <typename T> DoubleLinkedList<T> DoubleLinkedList<T>::Index(const T data) {
+    DoubleLinkedList<T> indexList = DoubleLinkedList<T>();
+    Node<T> *currentNode = head->next;
 
     for (unsigned int i = 0; i < length; ++i) {
         if (currentNode->data == data) indexList.Append(i);
@@ -145,8 +148,8 @@ DoubleLinkedList DoubleLinkedList::Index(const int data) {
     return indexList;
 }
 
-void DoubleLinkedList::Print() {
-    Node* currentNdoe = head->next;
+template <typename T> void DoubleLinkedList<T>::Print() {
+    Node<T> *currentNdoe = head->next;
     while (currentNdoe != tail) {
         std::cout << currentNdoe->data;
         
@@ -157,6 +160,6 @@ void DoubleLinkedList::Print() {
     }
 }
 
-int DoubleLinkedList::Length() {
+template <typename T> int DoubleLinkedList<T>::Length() {
     return length;
 }

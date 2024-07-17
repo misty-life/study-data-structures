@@ -4,13 +4,13 @@
 
 int main(void)
 {
-    DoubleLinkedList list = DoubleLinkedList();
+    DoubleLinkedList<char> list = DoubleLinkedList<char>();
 
-    list.Append(0);
-    list.Append(1);
-    list.Append(2);
+    list.Append('a');
+    list.Append('b');
+    list.Append('c');
 
-    list.Insert(3, 5);
+    list.Insert(1, 'd');
 
     list.Print();
 
