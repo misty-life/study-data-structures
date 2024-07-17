@@ -1,6 +1,9 @@
 ### Array
 
 ## Functions
+- [] (배열 접근 연산자 함수)
+    - T : O(n)
+
 - Add (배열의 끝에 추가)
     - T : O(n)
 

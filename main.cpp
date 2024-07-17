@@ -11,6 +11,8 @@ int main(void)
 
     array.Print();
 
+    std::cout << array[3] << std::endl;
+
     array.Remove(1);
     
     array.Print();

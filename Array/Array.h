@@ -1,5 +1,7 @@
 #include <iostream>
 
+// Declaration
+
 template <typename T> class Array {
 private:
     T *array;
@@ -9,12 +11,16 @@ public:
     Array();
     ~Array();
 
+    T operator[](int index);
+
     void Add(const T data);
     Array<int> Index(const T data);
     void Remove(const int index);
     void Print();
     int Length();
 };
+
+// Definition
 
 template <typename T> Array<T>::Array() {
     array = new T;
@@ -23,6 +29,12 @@ template <typename T> Array<T>::Array() {
 
 template <typename T> Array<T>::~Array() {
     delete [] array;
+}
+
+template <typename T> T Array<T>::operator[](int index) {
+    if (index < 0 || index > length - 1) throw std::out_of_range();
+    
+    return array[index];
 }
 
 template <typename T> void Array<T>::Add(const T data) {
