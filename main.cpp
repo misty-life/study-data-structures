@@ -1,18 +1,30 @@
 #include <iostream>
 
-#include "Array/Array.h"
-#include "DoubleLinkedList/DoubleLinkedList.h"
-#include "Stack/Stack.h"
+#include "1_Array/Array.h"
+#include "2_DoubleLinkedList/DoubleLinkedList.h"
+#include "3_Stack/Stack.h"
+#include "4_Queue/Queue.h"
 
 int main(void)
 {
-    Stack<int> stack = Stack<int>();
+    Queue<int> q = Queue<int>();
 
-    stack.Push(1);
-    stack.Push(2);
-    stack.Push(3);
-    stack.Push(4);
-    stack.Push(5);
+    q.Enqueue(1);
+    q.Enqueue(2);
+    q.Enqueue(3);
+    q.Print();
+
+    q.Dequeue();
+    q.Print();
+
+    q.Dequeue();
+    q.Print();
+
+    q.Dequeue();
+    q.Print();
+
+    q.Dequeue();
+    q.Print();
 
     return 0;
 }
